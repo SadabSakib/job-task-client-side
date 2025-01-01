@@ -4,16 +4,16 @@ import { Typewriter } from "react-simple-typewriter";
 const Slider = () => {
   const slides = [
     {
-      text: "Welcome to Visa Navigator",
-      description: "Your ultimate portal for visa information.",
+      text: "Welcome to Historical Arifact Tracker",
+      description: "Your ultimate site to know about artifacts",
     },
     {
-      text: "Find All Visa Information",
-      description: "Get details about all types of visas with ease.",
+      text: "Find All Artifact Information",
+      description: "Get details about all types of artifacts with ease.",
     },
     {
-      text: "Apply for Visas Online",
-      description: "Simple and efficient online visa applications.",
+      text: "Add Artifacts u want",
+      description: "Informative and pithed out information about artifacts",
     },
   ];
 

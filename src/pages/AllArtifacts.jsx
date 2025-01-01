@@ -4,7 +4,21 @@ import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 const AllArtifacts = () => {
   const [artifacts, setArtifacts] = useState([]);
-  //   const [query, setQuery] = useState("");
+  const [likes, setLikes] = useState(0);
+  const [id, setId] = useState(null)
+  
+  // useEffect(() => {
+  //   artifacts.forEach((artifact) => {
+  //     setId(artifact._id);
+  //   });
+  // },[artifacts])
+  //   // const [query, setQuery] = useState("");
+  // useEffect(async() => {
+  //   const res = await axiosSecure.get(`artifacts/${id}`);
+  //       const artifactData = res.data;
+  //       // setArtifact(artifactData);
+  //       setLikes(artifactData.likes || 0);
+  // }),[id]
 
   const axiosSecure = useAxiosSecure();
 
@@ -34,7 +48,7 @@ const AllArtifacts = () => {
               <div className="flex items-center">
                 {" "}
                 <FaThumbsUp className="mr-1 text-gray-500" />{" "}
-                <span className="text-gray-500">3 likes</span>{" "}
+                <span className="text-gray-500">{artifact.likes}</span>{" "}
               </div>{" "}
               <div className="flex items-center">
                 {" "}

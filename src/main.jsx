@@ -26,6 +26,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+// import "bootstrap/dist/css/bootstrap.min.css"; 
 import Users2 from "./components/Users2.jsx";
 import AllArtifacts from "./pages/AllArtifacts.jsx";
 import AddArtifact from "./pages/AddArtifact.jsx";
@@ -33,6 +34,7 @@ import MyArtifacts from "./pages/MyArtifacts.jsx";
 import LikedArtifacts from "./pages/LikedArtifacts.jsx";
 import ArtifactDetails from "./pages/ArtifactDetails.jsx";
 import UpdateArtifact from "./pages/UpdateArtifact.jsx";
+
 
 // const router = createBrowserRouter([
 //   {

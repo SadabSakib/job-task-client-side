@@ -25,12 +25,16 @@ const SignIn = () => {
         setUser(user);
         const email = { email: user?.email };
         axios
-          .post("http://localhost:5000/jwt", email, { withCredentials: true })
+          .post(
+            "https://assignment-11-server-side-omega-beige.vercel.app/jwt",
+            email,
+            { withCredentials: true }
+          )
           .then((data) => {
             console.log(data);
           });
         //  const email = { email: user?.email };
-        // axios.post("http://localhost:5000/jwt", email, {
+        // axios.post("https://assignment-11-server-side-omega-beige.vercel.app/jwt", email, {
         //    withCredentials:true
         //  }).then((data) => {
         //    console.log(data);
@@ -57,20 +61,27 @@ const SignIn = () => {
         // axios part for token generating
         const user = { email: email };
         axios
-          .post("http://localhost:5000/jwt", user, {
-            withCredentials: true,
-          })
+          .post(
+            "https://assignment-11-server-side-omega-beige.vercel.app/jwt",
+            user,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             console.log(res);
           });
 
-        fetch(`http://localhost:5000/users`, {
-          method: "PATCH",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(loginInfo),
-        })
+        fetch(
+          `https://assignment-11-server-side-omega-beige.vercel.app/users`,
+          {
+            method: "PATCH",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(loginInfo),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

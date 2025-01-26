@@ -4,7 +4,7 @@ import { data } from "react-router-dom";
 import { setDriver } from "localforage";
 
 const SignUp = () => {
-  const { creatUser,setUser } = useContext(AuthContext);
+  const { creatUser, setUser } = useContext(AuthContext);
   const handleSignUp = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -16,17 +16,20 @@ const SignUp = () => {
     creatUser(email, password)
       .then((result) => {
         console.log("user created at firebase:", result.user);
-        setUser(result.user)
+        setUser(result.user);
         const creationTime = result.user?.metadata?.creationTime;
         console.log(creationTime);
-        const newUser = { name, email,password,creationTime };
-        fetch("http://localhost:5000/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(newUser),
-        })
+        const newUser = { name, email, password, creationTime };
+        fetch(
+          "https://assignment-11-server-side-omega-beige.vercel.app/users",
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(newUser),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.insertedId) {

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 // import { AuthContext } from "../provider/AuthProvider";
 // //   const { user } = useContext(AuthContext);
 const AddArtifact = () => {
@@ -40,13 +41,16 @@ const AddArtifact = () => {
     e.preventDefault();
     // Handle form submission
     console.log("addartifact", formData);
-    fetch("http://localhost:5000/artifacts", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
+    fetch(
+      "https://assignment-11-server-side-omega-beige.vercel.app/artifacts",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
@@ -61,6 +65,9 @@ const AddArtifact = () => {
 
   return (
     <div className="container mx-auto p-4">
+       <Helmet>
+              <title>Artifact Tracker|Add Artifacts</title>
+            </Helmet>
       <form
         onSubmit={handleSubmit}
         className="p-6 bg-white rounded-lg shadow-md"

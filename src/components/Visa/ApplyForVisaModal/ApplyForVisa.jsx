@@ -48,13 +48,16 @@ const ApplyForVisa = ({ id, visa }) => {
       visaType,
     };
 
-    fetch("http://localhost:5000/applyVisas", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newVisaApplication),
-    })
+    fetch(
+      "https://assignment-11-server-side-omega-beige.vercel.app/applyVisas",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newVisaApplication),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {

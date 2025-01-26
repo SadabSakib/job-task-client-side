@@ -4,12 +4,14 @@ import { useLoaderData } from "react-router-dom";
 
 const Users = () => {
   const laodedUser = useLoaderData();
-  console.log(laodedUser)
+  console.log(laodedUser);
   // const [users, setUsers] = useState(laodedUser);
   const [users, setUsers] = useState([]);
-  
+
   axios
-    .get("http://localhost:5000/users", { withCredentials: true })
+    .get("https://assignment-11-server-side-omega-beige.vercel.app/users", {
+      withCredentials: true,
+    })
     .then((res) => {
       console.log(res);
       setUsers(res.data);
@@ -17,9 +19,12 @@ const Users = () => {
 
   const handleUserDelete = (id) => {
     //   delete user from the mongodb database
-    fetch(`http://localhost:5000/users/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://assignment-11-server-side-omega-beige.vercel.app/users/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("delete is done", data);

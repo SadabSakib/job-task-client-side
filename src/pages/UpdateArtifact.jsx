@@ -86,7 +86,7 @@ const UpdateArtifact = () => {
     e.preventDefault();
     // Handle form submission
     console.log("addartifact", formData);
-    // fetch("http://localhost:5000/artifacts", {
+    // fetch("https://assignment-11-server-side-omega-beige.vercel.app/artifacts", {
     //   method: "POST",
     //   headers: {
     //     "content-type": "application/json",
@@ -113,7 +113,7 @@ const UpdateArtifact = () => {
         console.error("Error updating artifact:", err);
         toast.error("Failed to update artifact");
       });
-    //   fetch(`http://localhost:5000/artifact/${_id}`, {
+    //   fetch(`https://assignment-11-server-side-omega-beige.vercel.app/artifact/${_id}`, {
     //         method: "PUT",
     //         headers: {
     //           "content-type": "application/json",

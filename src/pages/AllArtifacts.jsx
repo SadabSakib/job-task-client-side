@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../components/hooks/useAxiosSecure";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 const AllArtifacts = () => {
   const [artifacts, setArtifacts] = useState([]);
   const [likes, setLikes] = useState(0);
@@ -23,7 +24,9 @@ const AllArtifacts = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/searchArtifact?q=${query}`);
+      const response = await fetch(
+        `https://assignment-11-server-side-omega-beige.vercel.app/searchArtifact?q=${query}`
+      );
       const data = await response.json();
       setArtifacts(data);
     } catch (error) {
@@ -41,6 +44,9 @@ const AllArtifacts = () => {
   }, []);
   return (
     <div>
+       <Helmet>
+              <title>Artifact Tracker|All Artifacts</title>
+            </Helmet>
       {" "}
       <form onSubmit={handleSearch}>
         {" "}

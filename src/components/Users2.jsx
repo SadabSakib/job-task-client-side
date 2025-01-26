@@ -11,25 +11,29 @@ const Users2 = () => {
   // const { data:users,isPending,error,isError} = useQuery({
   //   queryKey: ["users"],
   //   queryFn: async () => {
-  //     const res = await fetch("http://localhost:5000/users");
+  //     const res = await fetch("https://assignment-11-server-side-omega-beige.vercel.app/users");
   //     return res.json()
   //   }
   // });
   useEffect(() => {
     axios
-      .get("http://localhost:5000/users", { withCredentials: true })
+      .get("https://assignment-11-server-side-omega-beige.vercel.app/users", {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res);
         setUsers(res.data);
       });
-  },[])
-  
+  }, []);
 
   const handleUserDelete = (id) => {
     //   delete user from the mongodb database
-    fetch(`http://localhost:5000/users/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://assignment-11-server-side-omega-beige.vercel.app/users/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("delete is done", data);

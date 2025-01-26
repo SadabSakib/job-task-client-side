@@ -10,7 +10,7 @@
 //     const [myAdded, setMyAdded] = useState(null);
 //     const axiosSecure = useAxiosSecure();
 //   useEffect(() => {
-//     // fetch(`http://localhost:5000/artifact/${user?.email}`)
+//     // fetch(`https://assignment-11-server-side-omega-beige.vercel.app/artifact/${user?.email}`)
 //     //   .then((res) => res.json())
 //     //   .then((data) => {
 //     //     console.log(data);
@@ -24,7 +24,7 @@
 //   //    const handleDelete = (_id) => {
 //   //      console.log(_id);
 
-//   //      fetch(`http://localhost:5000/visa/${_id}`, {
+//   //      fetch(`https://assignment-11-server-side-omega-beige.vercel.app/visa/${_id}`, {
 //   //        method: "DELETE",
 //   //      })
 //   //        .then((res) => res.json())
@@ -90,6 +90,7 @@ import useAxiosSecure from "../components/hooks/useAxiosSecure";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { FaEdit, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const MyArtifacts = () => {
   const { user } = useContext(AuthContext);
@@ -101,19 +102,18 @@ const MyArtifacts = () => {
     if (user) {
       axiosSecure
         .get(`artifact/${user?.email}`)
-          .then((res) => {
-              setMyAdded(res.data); 
-              console.log(res.data)
-          })
+        .then((res) => {
+          setMyAdded(res.data);
+          console.log(res.data);
+        })
         .catch((err) => console.error("Error fetching artifacts:", err));
     }
   }, [user, axiosSecure]);
 
+  const handleDelete = (_id) => {
+    console.log(_id);
 
-    const handleDelete = (_id) => {
-      console.log(_id);
-
-    //   fetch(`http://localhost:5000/myVisaApplication/${_id}`, {
+    //   fetch(`https://assignment-11-server-side-omega-beige.vercel.app/myVisaApplication/${_id}`, {
     //     method: "DELETE",
     //   })
     //     .then((res) => res.json())
@@ -127,23 +127,29 @@ const MyArtifacts = () => {
     //     .catch((err) => {
     //       console.log(err);
     //     });
-      // };
-      axiosSecure.delete(`artifact/${_id}`)
+    // };
+    axiosSecure
+      .delete(`artifact/${_id}`)
       .then((res) => {
-          console.log(res.data);
-          if (res.data.deletedCount > 0) {
-            const remaining = myAdded.filter((singleAdded) => singleAdded._id !== _id);
-            setMyAdded(remaining);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      };
+        console.log(res.data);
+        if (res.data.deletedCount > 0) {
+          const remaining = myAdded.filter(
+            (singleAdded) => singleAdded._id !== _id
+          );
+          setMyAdded(remaining);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   console.log(myAdded, user);
   return (
     <div className="overflow-x-auto">
+      <Helmet>
+        <title>Artifact Tracker|Add Artifacts</title>
+      </Helmet>
       <table className="table w-full">
         <thead>
           <tr>

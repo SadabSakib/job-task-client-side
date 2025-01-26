@@ -1,9 +1,9 @@
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.jsx";
+// import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AddCoffee from "./components/AddCoffee.jsx";
+// import AddCoffee from "./components/AddCoffee.jsx";
 import UpdateCoffee from "./components/UpdateCoffee.jsx";
 import SignIn from "./components/SignIn.jsx";
 import SignUp from "./components/SignUp.jsx";
@@ -26,7 +26,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-// import "bootstrap/dist/css/bootstrap.min.css"; 
+// import "bootstrap/dist/css/bootstrap.min.css";
 import Users2 from "./components/Users2.jsx";
 import AllArtifacts from "./pages/AllArtifacts.jsx";
 import AddArtifact from "./pages/AddArtifact.jsx";
@@ -34,7 +34,7 @@ import MyArtifacts from "./pages/MyArtifacts.jsx";
 import LikedArtifacts from "./pages/LikedArtifacts.jsx";
 import ArtifactDetails from "./pages/ArtifactDetails.jsx";
 import UpdateArtifact from "./pages/UpdateArtifact.jsx";
-
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 // const router = createBrowserRouter([
 //   {
@@ -49,7 +49,7 @@ import UpdateArtifact from "./pages/UpdateArtifact.jsx";
 //       {
 //         path: "/all-visas",
 //         element: <AllVisas />,
-//         loader: () => fetch("http://localhost:5000/visas"),
+//         loader: () => fetch("https://assignment-11-server-side-omega-beige.vercel.app/visas"),
 //       },
 //       {
 //         path: "/add-visa",
@@ -66,7 +66,7 @@ import UpdateArtifact from "./pages/UpdateArtifact.jsx";
 //             <MyAddedVisas />
 //           </PrivateRoute>
 //         ),
-//         // loader: ({params}) => fetch("http://localhost:5000/coffee"),
+//         // loader: ({params}) => fetch("https://assignment-11-server-side-omega-beige.vercel.app/coffee"),
 //       },
 //       {
 //         path: "/my-visa-applications",
@@ -84,7 +84,7 @@ import UpdateArtifact from "./pages/UpdateArtifact.jsx";
 //           </PrivateRoute>
 //         ),
 //         loader: ({ params }) =>
-//           fetch(`http://localhost:5000/visa/${params.id}`),
+//           fetch(`https://assignment-11-server-side-omega-beige.vercel.app/visa/${params.id}`),
 //       },
 //       {
 //         path: "/login",
@@ -101,7 +101,7 @@ import UpdateArtifact from "./pages/UpdateArtifact.jsx";
 //         {
 //           path: "/users2",
 //           element: <Users2></Users2>,
-//           loader: () => fetch("/http://localhost:5000/users"),
+//           loader: () => fetch("/https://assignment-11-server-side-omega-beige.vercel.app/users"),
 //         },
 //     ],
 //   },
@@ -116,7 +116,10 @@ const router = createBrowserRouter([
       {
         path: "/all-artifacts",
         element: <AllArtifacts />,
-        loader: () => fetch("http://localhost:5000/artifacts"),
+        loader: () =>
+          fetch(
+            "https://assignment-11-server-side-omega-beige.vercel.app/artifacts"
+          ),
       },
       {
         path: "/add-artifact",
@@ -154,7 +157,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         // loader: ({ params }) =>
-        //   fetch(`http://localhost:5000/artifact/${params.id}`),
+        //   fetch(`https://assignment-11-server-side-omega-beige.vercel.app/artifact/${params.id}`),
       },
       {
         path: "/update-artifact/:id",
@@ -165,7 +168,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         // loader: ({ params }) =>
-        //   fetch(`http://localhost:5000/artifact/${params.id}`),
+        //   fetch(`https://assignment-11-server-side-omega-beige.vercel.app/artifact/${params.id}`),
       },
       { path: "/login", element: <SignIn /> },
       { path: "/register", element: <SignUp /> },
@@ -179,10 +182,12 @@ const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   </React.StrictMode>
 );

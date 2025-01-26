@@ -8,6 +8,7 @@ import ExampleCarouselImage3 from "../assets/images.jpg";
 import useAxiosSecure from "./hooks/useAxiosSecure";
 import { FaThumbsUp } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const settings = {
@@ -23,14 +24,13 @@ const Home = () => {
     ExampleCarouselImage3,
   ];
 
-
-const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
   const [topArtifacts, setTopArtifacts] = useState([]);
   useEffect(() => {
     const fetchTopArtifacts = async () => {
       try {
         const response = await axiosSecure.get(
-          "http://localhost:5000/api/top-artifacts"
+          "https://assignment-11-server-side-omega-beige.vercel.app/api/top-artifacts"
         );
         setTopArtifacts(response.data);
       } catch (error) {
@@ -40,9 +40,12 @@ const axiosSecure = useAxiosSecure();
     fetchTopArtifacts();
   }, []);
 
-  console.log(topArtifacts)
+  console.log(topArtifacts);
   return (
     <div className="">
+      <Helmet>
+        <title>Artifact Tracker|Home</title>
+      </Helmet>
       {/* <Slider></Slider> */}
       <Slider {...settings}>
         {" "}

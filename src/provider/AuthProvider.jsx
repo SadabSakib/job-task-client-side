@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
       .then(() => {
         console.log("signed out");
         setUser(null);
-      // navigate('/login')
+        // navigate('/login')
       })
       .catch((err) => console.log(err));
   };
@@ -56,7 +56,11 @@ const AuthProvider = ({ children }) => {
         if (currentUser.email) {
           const user = { email: currentUser.email };
           axios
-            .post("http://localhost:5000/jwt", user, { withCredentials: true })
+            .post(
+              "https://assignment-11-server-side-omega-beige.vercel.app/jwt",
+              user,
+              { withCredentials: true }
+            )
             .then((res) => {
               console.log("login token", res.data);
               setLoading(false);
@@ -65,7 +69,11 @@ const AuthProvider = ({ children }) => {
       } else {
         setUser(null);
         axios
-          .post("http://localhost:5000/logout", {}, { withCredentials: true })
+          .post(
+            "https://assignment-11-server-side-omega-beige.vercel.app/logout",
+            {},
+            { withCredentials: true }
+          )
           .then((res) => {
             console.log("logout data", res.data);
             setLoading(false);

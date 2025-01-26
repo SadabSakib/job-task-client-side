@@ -17,7 +17,7 @@ const Modal = ({ visa }) => {
     requiredDocuments,
     description,
   } = visa;
-  console.log(_id)
+  console.log(_id);
   console.log(requiredDocuments);
   const [visaData, setVisaData] = useState({
     countryImage,
@@ -46,13 +46,16 @@ const Modal = ({ visa }) => {
 
   const handlUpdate = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/visa/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(visaData),
-    })
+    fetch(
+      `https://assignment-11-server-side-omega-beige.vercel.app/visa/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(visaData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -247,7 +250,7 @@ const Modal = ({ visa }) => {
           </div>
         </div>
       </dialog>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

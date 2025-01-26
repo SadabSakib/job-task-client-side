@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../provider/AuthProvider";
 import useAxiosSecure from "../components/hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const LikedArtifacts = () => {
   const [likedArtifacts, setLikedArtifacts] = useState([]);
@@ -34,6 +35,9 @@ const LikedArtifacts = () => {
   console.log(likedArtifacts);
   return (
     <div>
+      <Helmet>
+        <title>Artifact Tracker|Add Artifacts</title>
+      </Helmet>
       <h2>Liked Artifacts</h2>
       <ul>
         {likedArtifacts?.map((artifact) => (

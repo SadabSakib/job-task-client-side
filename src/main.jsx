@@ -13,12 +13,12 @@ import NotFound from "./components/NotFound.jsx";
 // import Main from "./components/Main.jsx";
 import Home from "./components/Home.jsx";
 import PrivateRoute from "./components/Visa/PrivateRoute.jsx";
-import AllVisas from "./components/Visa/AllVisas.jsx";
+// import AllVisas from "./components/Visa/AllVisas.jsx";
 import Main from "./components/Visa/Main.jsx";
-import AddVisa from "./components/Visa/AddVisa.jsx";
-import MyAddedVisas from "./components/Visa/MyAddedVisas.jsx";
-import MyVisaApplications from "./components/Visa/MyVisaApplications.jsx";
-import VisaDetails from "./components/Visa/VisaDetails/VisaDetails.jsx";
+// import AddVisa from "./components/Visa/AddVisa.jsx";
+// import MyAddedVisas from "./components/Visa/MyAddedVisas.jsx";
+// import MyVisaApplications from "./components/Visa/MyVisaApplications.jsx";
+// import VisaDetails from "./components/Visa/VisaDetails/VisaDetails.jsx";
 import {
   useQuery,
   useMutation,

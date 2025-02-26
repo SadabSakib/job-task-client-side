@@ -36,7 +36,7 @@ const LikedArtifacts = () => {
   return (
     <div>
       <Helmet>
-        <title>Artifact Tracker|Add Artifacts</title>
+        <title>Artifacts Tracker|Add Artifacts</title>
       </Helmet>
       <h2>Liked Artifacts</h2>
       <ul>

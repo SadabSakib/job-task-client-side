@@ -46,14 +46,11 @@ const Header = () => {
             <NavLink to="/my-artifacts">My Artifacts</NavLink>{" "}
           </li>{" "}
           <li>
-            {" "}
             <NavLink to="/liked-artifacts">Liked Artifacts</NavLink>{" "}
-          </li>{" "}
+          </li>
           {user ? (
             <>
-              {" "}
               <li>
-                {/* <div className=""> */}{" "}
                 <div className="my-auto">
                   <img
                     src={user.photoURL}

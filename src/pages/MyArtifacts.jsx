@@ -153,7 +153,7 @@ const MyArtifacts = () => {
       <table className="table w-full">
         <thead>
           <tr>
-            <th>Artifact Name</th>
+            <th>Artifact Name :</th>
             <th>Artifact Type</th>
             <th>Discovered By</th>
             <th>Present Location</th>

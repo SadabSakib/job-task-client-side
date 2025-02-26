@@ -144,7 +144,7 @@ const MyArtifacts = () => {
       });
   };
 
-  console.log(myAdded, user);
+  // console.log(myAdded, user);
   return (
     <div className="overflow-x-auto">
       <Helmet>
